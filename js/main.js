@@ -4,7 +4,36 @@
 (function () {
   "use strict";
 
-  /* ---------- Landing: envelope open → navigate ---------- */
+  /* ---------- Personalization: resolve ?to= guest ---------- */
+  var guest = null;
+  (function resolveGuest() {
+    var to = "";
+    try {
+      to = new URLSearchParams(window.location.search).get("to") || "";
+    } catch (e) { to = ""; }
+    to = to.trim().toLowerCase();
+    if (!to || typeof GUESTS === "undefined" || !GUESTS) return;
+    if (GUESTS[to]) { guest = GUESTS[to]; return; }
+    for (var key in GUESTS) {
+      if (Object.prototype.hasOwnProperty.call(GUESTS, key) &&
+          GUESTS[key] && (GUESTS[key].name || "").toLowerCase() === to) {
+        guest = GUESTS[key];
+        return;
+      }
+    }
+  })();
+
+  function guestLabel() {
+    return guest ? guest.title + " " + guest.name : "";
+  }
+
+  /* ---------- Landing: personalize envelope letter ---------- */
+  var envLetterB = document.querySelector(".env-letter b");
+  if (guest && envLetterB) {
+    envLetterB.textContent = "Dear " + guestLabel();
+  }
+
+  /* ---------- Landing: envelope open → navigate (keep ?to=) ---------- */
   var envelope = document.getElementById("envelope");
   if (envelope) {
     var opened = false;
@@ -14,9 +43,33 @@
       envelope.classList.add("open");
       envelope.setAttribute("aria-expanded", "true");
       setTimeout(function () {
-        window.location.href = "invite.html";
+        window.location.href = "invite.html" + window.location.search;
       }, 1150);
     });
+  }
+
+  /* ---------- Invite page: apply personalization ---------- */
+  var greet = document.getElementById("guestGreet");
+  var footerLine = document.getElementById("footerLine");
+  if (guest) {
+    document.title = guestLabel() + " \u2014 Xiannara Amethyst\u2019s Fairy First";
+
+    if (greet) {
+      greet.textContent = "Dear " + guestLabel() + " \u2014 you\u2019re specially invited \u2728";
+      greet.hidden = false;
+    }
+    if (footerLine) {
+      footerLine.textContent = "See you there, " + guestLabel() + "!";
+    }
+
+    var gpItems = document.querySelectorAll(".gp-list li[data-gp-name]");
+    var target = guest.name.trim().toLowerCase();
+    for (var i = 0; i < gpItems.length; i++) {
+      var gpName = (gpItems[i].getAttribute("data-gp-name") || "").trim().toLowerCase();
+      if (gpName === target) {
+        gpItems[i].classList.add("gp-me");
+      }
+    }
   }
 
   /* ---------- Scroll reveal (IntersectionObserver + rect fallback) ---------- */
