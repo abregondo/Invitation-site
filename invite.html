@@ -1,11 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#fff1f5" />
-  <meta name="description" content="Join us to celebrate Jana Elouise's Fairy First birthday — August 1, 2026." />
-  <title>Xiannara Amethyst&rsquo;s Fairy First &mdash; Invitation</title>
+  <title>Xiannara Amethyst&rsquo;s Christening &mdash; Invitation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -281,6 +280,8 @@
 
       <span class="hero-butterfly" aria-hidden="true">🦋</span>
 
+      <p class="guest-greet" id="guestGreet" hidden></p>
+
       <p class="join">Join us to celebrate</p>
 
       <div class="frame">
@@ -297,7 +298,7 @@
 
       <div class="name-banner">
         <p class="possessive">Xiannara Amethyst&rsquo;s</p>
-        <h1 class="theme-title">Christening</h1>
+        <h1 class="theme-title">Christening </h1>
       </div>
 
       <p class="hero-note">is turning one &mdash; come sprinkle some magic with us</p>
@@ -311,6 +312,7 @@
       </div>
 
       <div class="date-block">
+        <div class="cal" aria-hidden="true">📅</div>
         <p class="full-date">November 22, 2026</p>
         <p class="day">Sunday</p>
       </div>
@@ -342,11 +344,10 @@
             target="_blank"
             rel="noopener noreferrer"
           >View Map</a>
-          
         </article>
       </div>
 
-      <p class="dress-note">👗 <strong>Dress code:</strong> Casual - Formal Attire </p>
+      <p class="dress-note">👗 <strong>Dress code:</strong> Casual Attire </p>
     </section>
 
     <div class="divider" id="detailsDivider">🧚‍♀️ 🌸 ✨</div>
@@ -357,39 +358,39 @@
         <div class="gp-col">
           <p class="gp-heading" id="godparentsTitle"><span class="gp-ico" aria-hidden="true">🌸</span><span class="gp-name">Godmothers</span></p>
           <ul class="gp-list">
-            <li>Quennie</li>
-            <li>Trisha</li>
-            <li>Jed</li>
-            <li>Lianne</li>
-            <li>Jenny</li>
-            <li>Joan</li>
-            <li>Mary Dee</li>
-            <li>Apple</li>
-            <li>Rochelle</li>
-            <li>Donna</li>
-            <li>Jecil</li>
-            <li>Neilialou</li>
+            <li data-gp-name="Quennie">Quennie</li>
+            <li data-gp-name="Trisha">Trisha</li>
+            <li data-gp-name="Jed">Jed</li>
+            <li data-gp-name="Lianne">Lianne</li>
+            <li data-gp-name="Jenny">Jenny</li>
+            <li data-gp-name="Joan">Joan</li>
+            <li data-gp-name="Mary Dee">Mary Dee</li>
+            <li data-gp-name="Apple">Apple</li>
+            <li data-gp-name="Rochelle">Rochelle</li>
+            <li data-gp-name="Donna">Donna</li>
+            <li data-gp-name="Jecil">Jecil</li>
+            <li data-gp-name="Neilialou">Neilialou</li>
           </ul>
         </div>
 
         <div class="gp-col">
           <p class="gp-heading"><span class="gp-ico" aria-hidden="true">🌷</span><span class="gp-name">Godfathers</span></p>
           <ul class="gp-list">
-            <li>Cabiladas</li>
-            <li>Hamo</li>
-            <li>Pol</li>
-            <li>Denn</li>
-            <li>Adrian</li>
-            <li>Jhonas</li>
-            <li>John</li>
-            <li>Daniel</li>
-            <li>Hammer</li>
-            <li>Janssen</li>
-            <li>Cris</li>
-            <li>Jay</li>
-            <li>Al</li>
-            <li>Jesson</li>
-            <li>Emman</li>
+            <li data-gp-name="Cabiladas">Cabiladas</li>
+            <li data-gp-name="Hamo">Hamo</li>
+            <li data-gp-name="Pol">Pol</li>
+            <li data-gp-name="Denn">Denn</li>
+            <li data-gp-name="Adrian">Adrian</li>
+            <li data-gp-name="Jhonas">Jhonas</li>
+            <li data-gp-name="John">John</li>
+            <li data-gp-name="Daniel">Daniel</li>
+            <li data-gp-name="Hammer">Hammer</li>
+            <li data-gp-name="Janssen">Janssen</li>
+            <li data-gp-name="Cris">Cris</li>
+            <li data-gp-name="Jay">Jay</li>
+            <li data-gp-name="Al">Al</li>
+            <li data-gp-name="Jesson">Jesson</li>
+            <li data-gp-name="Emman">Emman</li>
           </ul>
         </div>
       </div>
@@ -433,7 +434,7 @@
     </section>
 
     <footer class="footer reveal">
-      See you there, fairy friends!
+      <span id="footerLine">See you there, fairy friends!</span>
       <small>Xiannara Amethyst&rsquo;s Christening &middot; November 22, 2026</small>
     </footer>
   </main>
@@ -447,6 +448,7 @@
     </div>
   </div>
 
+  <script src="js/guests.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
